@@ -3,6 +3,8 @@ import Head from 'next/head'
 import Button from '@mui/material/Button'
 
 export default function Home() {
+  console.log('Home')
+
   return (
     <>
       <Head>
