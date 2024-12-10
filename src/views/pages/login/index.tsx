@@ -25,11 +25,17 @@ import LoginLight from '/public/images/login-light.png'
 import GoogleSvg from '/public/svgs/google-logo.svg'
 import FacebookSvg from '/public/svgs/facebook-logo.svg'
 
+// ** hook
+import { useAuth } from 'src/hooks/useAuth'
+
 type TProps = {}
 const LoginPage: NextPage<TProps> = () => {
   //State
   const [showPassword, setShowPassword] = useState(false)
   const [rememberMe, setRememberMe] = useState(false)
+
+  //** context
+  const { login } = useAuth()
 
   // ** Theme
   const theme = useTheme()
@@ -56,7 +62,10 @@ const LoginPage: NextPage<TProps> = () => {
     resolver: yupResolver(schema)
   })
   const onsubmit = (data: { email: string; password: string }) => {
-    console.log('data', data)
+    if (!Object.keys(errors).length) {
+      login({ ...data, rememberMe })
+      console.log('data', data)
+    }
   }
 
   return (
@@ -168,7 +177,7 @@ const LoginPage: NextPage<TProps> = () => {
             </Button>
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 2 }}>
               <Typography>Don't have an account?</Typography>
-              <Link style={{ color: theme.palette.mode === 'light' ? theme.palette.common.black : theme.palette.common.white }} href='/register'>
+              <Link style={{ color: theme.palette.primary.main }} href='/register'>
                 {'Register'}
               </Link>
             </Box>

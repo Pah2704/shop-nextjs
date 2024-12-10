@@ -27,10 +27,13 @@ const TextFieldStyle = styled(TextField)<TextFieldProps>(({ theme }) => {
       transition: theme.transitions.create(['border-color', 'box-shadow'], {
         duration: theme.transitions.duration.shorter
       }),
-
+      '& .MuiInputBase-inputAdornedEnd': {
+        borderRadius: 8
+      },
       '& input::-ms-reveal': {
         display: 'none'
       },
+
       '&:before, &:after': { display: 'none' },
       '.MuiInputBase-input': {
         padding: '8px 10px'

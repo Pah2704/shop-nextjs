@@ -10,7 +10,7 @@ on:
     branches:
       - main
     types:
-      - merged
+      - closed
 jobs:
   Deploy-Production:
     runs-on: ubuntu-latest

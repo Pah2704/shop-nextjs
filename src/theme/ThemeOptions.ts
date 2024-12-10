@@ -3,7 +3,7 @@ import { deepmerge } from '@mui/utils'
 import { PaletteMode, ThemeOptions } from '@mui/material'
 
 // ** User Theme Options
-import UserThemeOptions from 'src/layouts/UserThemeOptions'
+import UserThemeOptions from 'src/views/layouts/UserThemeOptions'
 
 // ** Type Import
 
@@ -47,9 +47,7 @@ const themeOptions = (settings: Settings, overrideMode: PaletteMode): ThemeOptio
   return deepmerge(mergedThemeConfig, {
     palette: {
       primary: {
-        ...(mergedThemeConfig.palette
-          ? mergedThemeConfig.palette?.[themeColor]
-          : palette(mode === 'semi-dark' ? overrideMode : mode, skin).primary)
+        ...(mergedThemeConfig.palette ? mergedThemeConfig.palette?.[themeColor] : palette(mode === 'semi-dark' ? overrideMode : mode, skin).primary)
       }
     }
   })
