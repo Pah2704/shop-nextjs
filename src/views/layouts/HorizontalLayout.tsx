@@ -5,7 +5,7 @@ import React from 'react'
 import { NextPage } from 'next/types'
 
 // ** MUI
-import { Badge, IconButton, styled, Toolbar, Typography } from '@mui/material'
+import { Badge, IconButton, styled, Toolbar, Typography, useTheme } from '@mui/material'
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar'
 
 // ** Components
@@ -21,6 +21,8 @@ const AppBar = styled(MuiAppBar, {
   shouldForwardProp: prop => prop !== 'open'
 })<AppBarProps>(({ theme, open }) => ({
   zIndex: theme.zIndex.drawer + 1,
+  backgroundColor: theme.palette.mode === 'light' ? theme.palette.customColors.lightPaperBg : theme.palette.customColors.darkPaperBg,
+  color: theme.palette.primary.main,
   transition: theme.transitions.create(['width', 'margin'], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen
@@ -40,11 +42,14 @@ type TProps = {
   toggleDrawer?: () => void
 }
 const HorizontalLayout: NextPage<TProps> = ({ open, toggleDrawer }) => {
+  const theme = useTheme()
+
   return (
     <AppBar position='absolute' open={open}>
       <Toolbar
         sx={{
-          pr: '24px' // keep right padding when drawer closed
+          pr: '30px', // keep right padding when drawer closed
+          margin: '0 20px'
         }}
       >
         <IconButton
@@ -54,6 +59,7 @@ const HorizontalLayout: NextPage<TProps> = ({ open, toggleDrawer }) => {
           onClick={toggleDrawer}
           sx={{
             marginRight: '36px',
+            padding: '10px',
             ...(open && { display: 'none' })
           }}
         >
@@ -63,7 +69,7 @@ const HorizontalLayout: NextPage<TProps> = ({ open, toggleDrawer }) => {
           Dashboard
         </Typography>
         <IconButton color='inherit'>
-          <Badge badgeContent={4} color='secondary'>
+          <Badge badgeContent={4} color='primary'>
             <IconifyIcon icon='mingcute:notification-fill'></IconifyIcon>
           </Badge>
         </IconButton>
