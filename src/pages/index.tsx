@@ -1,6 +1,8 @@
 'use client'
 import Head from 'next/head'
 import { Box } from '@mui/material'
+import LayoutNotApp from 'src/views/layouts/LayoutNotApp'
+import { ReactNode } from 'react'
 
 export default function Home() {
   return (
@@ -15,3 +17,4 @@ export default function Home() {
     </>
   )
 }
+Home.getLayout = (page: ReactNode) => <LayoutNotApp>{page}</LayoutNotApp>

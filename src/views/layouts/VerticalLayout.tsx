@@ -8,16 +8,16 @@ import { NextPage } from 'next/types'
 import { Divider, IconButton, styled, Toolbar } from '@mui/material'
 import MuiDrawer from '@mui/material/Drawer'
 import IconifyIcon from 'src/components/Icon'
+import ListVerticalLayout from './ListVerticalLayout'
 
 // ** Views
-import ListVerticalLayout from './ListVerticalLayout'
 
 // ** Components
 
 const drawerWidth: number = 240
 
 type TProps = {
-  open?: boolean
+  open: boolean
   toggleDrawer?: () => void
 }
 

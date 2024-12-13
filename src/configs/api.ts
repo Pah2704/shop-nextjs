@@ -1,13 +1,17 @@
-const BASE_URL = process.env.API_URL
+import { REFRESH_TOKEN } from './auth'
+
+export const BASE_URL = process.env.NEXT_PUBLIC_API_HOST
 
 export const CONFIG_API = {
   AUTH: {
     INDEX: {
-      LOGIN: 'https://api-shop-lks2.onrender.com/api/auth/login', //`${BASE_URL}/auth/login`,
-      REGISTER: 'auth/register',
-      LOGOUT: 'auth/logout',
-      CHECK: 'auth/check',
-      FORGOT_PASSWORD: 'auth/forgot-password'
-    }
+      LOGIN: `${BASE_URL}/auth/login`,
+      REFRESH_TOKEN: `${BASE_URL}/auth/refresh-token`,
+      // REGISTER: 'auth/register',
+      LOGOUT: `${BASE_URL}/auth/logout`
+      // CHECK: 'auth/check',
+      // FORGOT_PASSWORD: 'auth/forgot-password'
+    },
+    AUTH_ME: `${BASE_URL}/auth/me`
   }
 }

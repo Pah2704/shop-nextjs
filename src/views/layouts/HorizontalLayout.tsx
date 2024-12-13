@@ -10,6 +10,7 @@ import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar'
 
 // ** Components
 import IconifyIcon from 'src/components/Icon'
+import UserDropdown from 'src/components/user-dropdown'
 
 const drawerWidth: number = 240
 
@@ -38,12 +39,11 @@ const AppBar = styled(MuiAppBar, {
 }))
 
 type TProps = {
-  open?: boolean
+  open: boolean
   toggleDrawer?: () => void
+  isHideMenu?: boolean
 }
-const HorizontalLayout: NextPage<TProps> = ({ open, toggleDrawer }) => {
-  const theme = useTheme()
-
+const HorizontalLayout: NextPage<TProps> = ({ open, toggleDrawer, isHideMenu }) => {
   return (
     <AppBar position='absolute' open={open}>
       <Toolbar
@@ -52,22 +52,25 @@ const HorizontalLayout: NextPage<TProps> = ({ open, toggleDrawer }) => {
           margin: '0 20px'
         }}
       >
-        <IconButton
-          edge='start'
-          color='inherit'
-          aria-label='open drawer'
-          onClick={toggleDrawer}
-          sx={{
-            marginRight: '36px',
-            padding: '10px',
-            ...(open && { display: 'none' })
-          }}
-        >
-          <IconifyIcon icon='clarity:menu-line'></IconifyIcon>
-        </IconButton>
+        {!isHideMenu && (
+          <IconButton
+            edge='start'
+            color='inherit'
+            aria-label='open drawer'
+            onClick={toggleDrawer}
+            sx={{
+              marginRight: '36px',
+              padding: '10px',
+              ...(open && { display: 'none' })
+            }}
+          >
+            <IconifyIcon icon='clarity:menu-line'></IconifyIcon>
+          </IconButton>
+        )}
         <Typography component='h1' variant='h6' color='inherit' noWrap sx={{ flexGrow: 1 }}>
           Dashboard
         </Typography>
+        <UserDropdown />
         <IconButton color='inherit'>
           <Badge badgeContent={4} color='primary'>
             <IconifyIcon icon='mingcute:notification-fill'></IconifyIcon>

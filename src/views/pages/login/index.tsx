@@ -64,7 +64,6 @@ const LoginPage: NextPage<TProps> = () => {
   const onsubmit = (data: { email: string; password: string }) => {
     if (!Object.keys(errors).length) {
       login({ ...data, rememberMe })
-      console.log('data', data)
     }
   }
 
