@@ -8,6 +8,7 @@ import { NextPage } from 'next/types'
 import { Divider, IconButton, styled, Toolbar } from '@mui/material'
 import MuiDrawer from '@mui/material/Drawer'
 import IconifyIcon from 'src/components/Icon'
+import ListVerticalLayout from './ListVerticalLayout'
 
 // ** Views
 
@@ -60,7 +61,7 @@ const VerticalLayout: NextPage<TProps> = ({ open, toggleDrawer }) => {
       </Toolbar>
 
       <Divider />
-      {/* <ListVerticalLayout open={open} /> */}
+      <ListVerticalLayout open={open} />
     </Drawer>
   )
 }
