@@ -14,7 +14,10 @@ import Divider from '@mui/material/Divider'
 import IconButton from '@mui/material/IconButton'
 import Tooltip from '@mui/material/Tooltip'
 import { useAuth } from 'src/hooks/useAuth'
-import IconifyIcon from '../Icon'
+import IconifyIcon from 'src/components/Icon'
+
+// ** Translation
+import { useTranslation } from 'next-i18next'
 
 // import PersonAdd from '@mui/icons-material/PersonAdd'
 // import Settings from '@mui/icons-material/Settings'
@@ -23,6 +26,9 @@ import IconifyIcon from '../Icon'
 type TProps = {}
 
 const UserDropdown = (props: TProps) => {
+  // ** Translation
+  const { t } = useTranslation()
+
   const { user, logout } = useAuth()
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
@@ -36,7 +42,7 @@ const UserDropdown = (props: TProps) => {
   return (
     <React.Fragment>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-        <Tooltip title='Account'>
+        <Tooltip title={t('Account')}>
           <IconButton onClick={handleClick} size='small' sx={{ ml: 2 }} aria-controls={open ? 'account-menu' : undefined} aria-haspopup='true' aria-expanded={open ? 'true' : undefined}>
             <Avatar sx={{ width: 32, height: 32 }}>{user?.avatar ? <Image src={user?.avatar || ''} alt='avatar' width={32} height={32} /> : <IconifyIcon icon='mdi:user' />}</Avatar>
           </IconButton>
