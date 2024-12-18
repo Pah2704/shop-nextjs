@@ -63,7 +63,7 @@ const RecursiveListItems: NextPage<TListItems> = ({
     </>
   )
 }
-const ListVerticalLayout: NextPage<TProps> = ({ open }) => {
+const ListofVerticalLayout: NextPage<TProps> = ({ open }) => {
   const [openItems, setOpenItems] = React.useState<{ [key: string]: boolean }>({})
   React.useEffect(() => {
     if (!open) {
@@ -78,4 +78,4 @@ const ListVerticalLayout: NextPage<TProps> = ({ open }) => {
   )
 }
 
-export default ListVerticalLayout
+export default ListofVerticalLayout
